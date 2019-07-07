@@ -16,24 +16,18 @@ import com.trainingbasket.session2.model.League;
 
 public class ListLeague extends HttpServlet {
 
-	List<League> leagues = new ArrayList<League>();
+	List<League> leagues = null;
 
-	
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.service(req, res);
 	}
-	
-	public ListLeague() {
-		leagues.add(new League(2019, "Spring", "Champions League"));
-		leagues.add(new League(2019, "Winter", "Super League"));
-		leagues.add(new League(2019, "Autumn", "Junior League"));
-		leagues.add(new League(2019, "Summer", "Summer League"));
-	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+
+		leagues = (List<League>) getServletContext().getAttribute("leagueList");
 
 		// Set page title
 		String pageTitle = "Duke's Soccer League: List Leagues";
