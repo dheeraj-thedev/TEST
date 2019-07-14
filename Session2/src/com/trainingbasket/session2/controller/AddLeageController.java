@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.trainingbasket.session2.model.League;
 
-import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 /**
  * Servlet implementation class AddLeageController
@@ -54,6 +53,10 @@ public class AddLeageController extends HttpServlet {
 		} else {
 			League league = new League(Integer.parseInt(year), season, title);
 			List<League> leagueList = (List<League>) getServletContext().getAttribute("leagueList");
+			
+			//insert 
+			//read
+			
 			leagueList.add(league);
 			String filePath = "/LeagueData.csv";
 			// path getServletContext().getResource(filePath).getRef();

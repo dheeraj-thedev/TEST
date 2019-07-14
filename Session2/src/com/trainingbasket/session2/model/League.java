@@ -6,10 +6,21 @@ import java.util.List;
 
 public class League {
 
+	int Id;
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+
 	int year;
 	String season;
 	String title;
 
+	public League() {
+		// TODO Auto-generated constructor stub
+	}
 	public League(int year, String season, String title) {
 		this.title = title;
 		this.season = season;

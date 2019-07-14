@@ -2,6 +2,7 @@ package com.trainingbasket.session2.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.trainingbasket.session2.dao.LeagueDAOImpl;
 import com.trainingbasket.session2.model.League;
 
 public class ListLeague extends HttpServlet {
@@ -27,8 +29,15 @@ public class ListLeague extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 
-		leagues = (List<League>) getServletContext().getAttribute("leagueList");
+		//leagues = (List<League>) getServletContext().getAttribute("leagueList");
 
+		try {
+			leagues = new LeagueDAOImpl().getAllLeagues();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// Set page title
 		String pageTitle = "Duke's Soccer League: List Leagues";
 
